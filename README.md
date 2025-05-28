@@ -1,3 +1,4 @@
 Hello
 <br>
-This repo contains python program for student
+This repo contains Python programs for <em>student</em>
+<br>
