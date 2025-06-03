@@ -1,0 +1,38 @@
+# File I/O Demo: Writing to and reading from a file
+
+# -------- Writing to a file --------
+file_name = "demo_file.txt"
+
+# Open file in write mode and write some lines
+with open(file_name, "w") as file:
+    file.write("Hello, this is a demo file.\n")
+    file.write("We are learning file input and output in Python.\n")
+    file.write("File handling is essential!\n")
+
+print("Data written to file successfully.")
+
+# -------- Reading the entire content --------
+with open(file_name, "r") as file:
+    content = file.read()
+
+print("\nReading the file content:")
+print(content)
+
+# -------- Reading line by line --------
+print("\nReading line-by-line:")
+with open(file_name, "r") as file:
+    for line in file:
+        print(line.strip())
+
+# -------- Appending data to the file --------
+with open(file_name, "a") as file:
+    file.write("This line was appended later.\n")
+
+print("\nAppended a new line to the file.")
+
+# -------- Read the updated file --------
+with open(file_name, "r") as file:
+    updated_content = file.read()
+
+print("\nUpdated file content:")
+print(updated_content)
