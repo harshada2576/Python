@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.modulo.setFont(font)
         self.modulo.setObjectName("modulo")
-        self.lessthan = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.press_it("<<"))
+        self.lessthan = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.remove_it())
         self.lessthan.setGeometry(QtCore.QRect(210, 110, 80, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -123,19 +123,19 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.two.setFont(font)
         self.two.setObjectName("two")
-        self.plusorminus = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.press_it("+/-"))
+        self.plusorminus = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.plus_minus_it())
         self.plusorminus.setGeometry(QtCore.QRect(10, 480, 80, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.plusorminus.setFont(font)
         self.plusorminus.setObjectName("plusorminus")
-        self.dot = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.press_it("."))
+        self.dot = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.dot_it())
         self.dot.setGeometry(QtCore.QRect(210, 480, 80, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.dot.setFont(font)
         self.dot.setObjectName("dot")
-        self.equals = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.press_it("="))
+        self.equals = QtWidgets.QPushButton(self.centralwidget,clicked=lambda:self.math_it())
         self.equals.setGeometry(QtCore.QRect(310, 480, 80, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
@@ -158,11 +158,42 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+    def math_it(self):
+        screen= self.outputLabel.text()
+        try:
+            answer=eval(screen)
+            self.outputLabel.setText(str(answer))
+        except:
+            self.outputLabel.setText(str("ERROR"))
+    #positive negative
+    def plus_minus_it(self):
+        screen= self.outputLabel.text()
+        if "-" in screen:
+            self.outputLabel.setText(screen.replace("-","+"))
+        else:
+            self.outputLabel.setText(f'-{screen}')
+
+    #to remove character
+    def remove_it(self):
+        screen= self.outputLabel.text()
+        screen=screen[:-1]
+        self.outputLabel.setText(screen)
+
+     #for decimal point
+    def dot_it(self):
+       screen= self.outputLabel.text()
+       if screen[-1] ==".":
+           pass
+       if "." in screen:
+           pass
+       else:
+           self.outputLabel.setText(f'{screen}.')
+           
     def press_it(self,pressed):
         if pressed=="C":
             self.outputLabel.setText("0")
         else:
-            if self.outputLabel.text("0"):
+            if self.outputLabel.text()=="0":
                 self.outputLabel.setText("")
             self.outputLabel.setText(f'{self.outputLabel.text()}{pressed}')
 
