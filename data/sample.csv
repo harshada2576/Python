@@ -1,0 +1,5 @@
+id,name,email,signup_ts,country
+1,Alice,alice@example.com,2025-01-05 10:00:00,India
+2,Bob,bob-at-example.com,2025-02-10 12:30:00,US
+3, ,charlie@example.com,,
+4,Eve,eve@example.com,2025-03-01,UK
